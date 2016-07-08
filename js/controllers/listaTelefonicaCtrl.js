@@ -10,7 +10,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
 			});
 			$scope.contatos = data;
 		}).error(function (data, status) {
-			$scope.message = "Aconteceu um problema: " + data;
+			$scope.message = "Não foi possível carregar os contatos";
 		});
 	};
 
