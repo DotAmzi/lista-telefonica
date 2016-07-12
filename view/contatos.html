@@ -1,0 +1,42 @@
+<div class="jumbotron">
+
+  <ui-alert title="Ops, aconteceu um problema!">
+    {{message}}
+  </ui-alert>
+
+  <ui-accordions>
+    <ui-accordion title="Accordion 1">
+      Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mé, boa gente num é. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Vehicula non. Ut sed ex eros. Vivamus sit amet nibh non tellus tristique interdum.
+    </ui-accordion>
+
+    <ui-accordion title="Accordion 2">
+      Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mé, boa gente num é. Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Quem manda na minha terra sou Euzis! Mais vale um bebadis conhecidiss, que um alcoolatra anonimiss.
+      <br><br>
+      Suco de cevadiss deixa as pessoas mais interessantiss. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Interagi no mé, cursus quis, vehicula ac nisi.  undefined
+    </ui-accordion>
+</ui-accordions>
+
+
+  <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?"/>
+  <table ng-show="contatos.length > 0" class="table table-striped">
+    <tr>
+      <th></th>
+      <th>Serial</th>
+      <th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
+      <th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
+      <th>Operadora</th>
+      <th>Data</th>
+    </tr>
+    <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+      <td><input type="checkbox" ng-model="contato.selecionado"/></td>
+      <td>{{contato.serial}}</td>
+      <td><a href="#/detalhesContato/1">{{contato.nome | name | ellipsis:10}}</a></td>
+      <td>{{contato.telefone}}</td>
+      <td>{{contato.operadora.nome}}</td>
+      <td>{{contato.data | date:'dd/MM/yyyy HH:mm'}}</td>
+    </tr>
+  </table>
+  <hr/>
+  <a class="btn btn-primary btn-block" href="#/novoContato">Novo Contato</a>
+  <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar Contatos</button>
+</div>
