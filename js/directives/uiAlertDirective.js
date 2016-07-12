@@ -2,7 +2,7 @@ angular.module("listaTelefonica").directive("uiAlert", function(){
 	return{
 		templateUrl: "view/alert.html",
 		replace: true,
-		restricted: "EA",
+		restricted: "AE",
 		scope: {
 			topic: "@title"
 		},
