@@ -3,6 +3,17 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
 	$scope.contatos = contatos.data;
 	$scope.operadoras = operadoras.data;
 
+	var init = function(){
+		calcularImpostos($scope.contatos);
+		generateSerial($scope.contatos);
+	};
+
+	var calcularImpostos = function(contatos){
+		contatos.forEach(function(contato){
+			contato.operadora.precoComImposto = calcularImposto(contato.operadora.preco);
+		});
+	};
+
 	var generateSerial = function (contatos) {
 
 		contatos.forEach(function (item) {
@@ -36,5 +47,14 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
 		$scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
 	};
 
-	generateSerial($scope.contatos);
+	var contagem = 0;
+	var calcularImposto = function(preco){
+		console.log(contagem++);
+		var imposto = 1.2;
+		return preco * imposto;
+	}
+
+	init();
+
+	
 });

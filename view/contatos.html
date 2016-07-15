@@ -34,7 +34,7 @@
       <td><a href="#/detalhesContato/{{contato.id}}">{{contato.nome | name | ellipsis:10}}</a></td>
       <td>{{contato.telefone}}</td>
       <td>{{contato.operadora.nome}}</td>
-      <td>{{contato.operadora.preco | currency}}</td>
+      <td>{{contato.operadora.precoComImposto | currency}}</td>
       <td>{{contato.data | date:'dd/MM/yyyy HH:mm'}}</td>
     </tr>
   </table>
